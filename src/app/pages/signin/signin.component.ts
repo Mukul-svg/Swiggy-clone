@@ -20,7 +20,7 @@ export class SigninComponent {
   name: string = '';  
   email: string = '';
   password: string = '';
-  apiUrl: string = 'https://672b82731600dda5a9f5524c.mockapi.io/signin';
+  apiUrl: string = 'https://672da22bfd89797156430e3f.mockapi.io/users';
 
   @Input() signinStatus!: string;
   @Input() loginStatus!: boolean;
