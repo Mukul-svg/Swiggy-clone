@@ -1,0 +1,14 @@
+<div class="restaurant-detail mt-[200px] max-w-6xl mx-auto px-1 relative">
+    <h1 class="text-3xl font-extrabold text-black">{{ category }}</h1>
+    <p class="text-lg text-gray-600">{{ categoryQuote }}</p>
+     
+    <h1 class="text-3xl font-extrabold text-gray-800 mb-4 mt-6">Restaurants to Explore</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+
+      <app-restaurant-card
+        *ngFor="let restaurant of filteredRestaurants"
+        [restaurant]="restaurant">
+      </app-restaurant-card>
+    </div>
+  </div>
+  

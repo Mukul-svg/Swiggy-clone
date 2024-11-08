@@ -1,0 +1,37 @@
+
+<div class="px-4 py-5 bg-white rounded-lg w-full flex border-b border-gray-300 overflow-hidden">
+    <div class="flex-1 pr-4">
+      
+        <div class="flex justify-start mb-2">
+            <img [src]="menuItem.icon" alt="{{ menuItem.icon }}" class="w-6 h-6 border-2 border-red-500 flex items-center justify-center" />
+        </div>
+        <div>
+            <h2 class="text-lg font-semibold">{{ menuItem.name }}</h2>
+            <p class="text-xl font-bold text-gray-800 mb-2">₹{{ menuItem.price.toFixed(2) }}</p>
+            <p class="text-gray-600 text-sm flex items-center">
+                <span class="mr-1">{{ menuItem.rating }}</span> 
+                <i class="fas fa-star text-yellow-500"></i>
+                <span class="ml-1">({{ menuItem.numberOfRatings }})</span>
+            </p>
+            <p class="text-gray-600 text-md">{{ menuItem.description }}</p>
+        </div>
+    </div>
+
+    <div class="relative w-40 h-40">
+        <img [src]="menuItem.imageUrl" alt="{{ menuItem.name }}" class="w-full h-full rounded-xl object-cover">
+        
+       
+        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+            <button *ngIf="!inCart" (click)="addToCart()" class="px-6 py-2 bg-white text-green-500 border border-gray-300 rounded-lg font-semibold text-md w-32 h-10 flex items-center justify-center">
+                ADD
+            </button>
+            <div *ngIf="inCart" class="flex items-center">
+                <button (click)="decreaseQuantity()" class="bg-white text-green-500 border border-gray-300 rounded-lg px-2">-</button>
+                <span class="px-2">{{ quantity }}</span>
+                <button (click)="increaseQuantity()" class="bg-white text-green-500 border border-gray-300 rounded-lg px-2">+</button>
+            </div>
+        </div>
+        
+        <span class="text-xs text-gray-500 mt-4 block text-center">Customisable</span>
+    </div>
+</div>

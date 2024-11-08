@@ -1,0 +1,19 @@
+<div class="mt">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">What's on your mind ?</h2>
+    <div class="overflow-y-auto max-h-80 xl:max-h-none"> 
+        <div class="grid grid-cols-2 xs:grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+            <div
+                *ngFor="let category of popularCategories"
+                class="flex flex-col items-center bg-white overflow-hidden p-2 transition-shadow duration-200"
+                (click)="navigateToExplore(category.name)"
+                style="cursor: pointer;"
+            >
+                <img
+                    [src]="category.imageUrl"
+                    alt="{{ category.name }}"
+                    class="w-24 h-24 object-cover mb-2 rounded sm:w-20 sm:h-20 md:w-16 md:h-16 lg:w-24 lg:h-24"
+                />
+            </div>
+        </div>
+    </div>
+</div>

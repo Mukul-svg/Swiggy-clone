@@ -1,0 +1,55 @@
+<div class="container mx-auto px-4 py-6">
+    <h1 class="text-2xl font-semibold mb-4">Your Cart</h1>
+    <div *ngIf="!user" class="text-center flex flex-col items-center justify-center h-full mx-auto text-gray-500">
+      <p>You need to sign in to view your cart.</p>
+      <button (click)="redirectToSignIn()" class="px-4 py-2 bg-red-500 text-white rounded mt-4">
+        Sign In
+      </button>
+    </div>
+    <div *ngIf="cartItems.length === 0 && user" class="text-center flex flex-col items-center justify-center h-full mx-auto text-gray-500">
+      <p>Your cart is empty.</p>
+      <button [routerLink]="['/']" routerLinkActive="active" class="px-4 py-2 bg-red-500 text-white rounded mt-4">
+        See all restaurants near you
+      </button>
+    </div>
+  
+    <div *ngIf="cartItems.length > 0 && user" class="mb-4">
+      <button (click)="clearCartData()" class="px-4 py-2 bg-red-500 text-white rounded mb-4">
+        Clear All Items
+      </button>
+    </div>
+  
+    <ng-container *ngIf="cartItems.length > 0 && user">
+      <div *ngFor="let item of cartItems" class="px-4 py-5 bg-white rounded-lg w-full flex border-b border-gray-300 overflow-hidden mb-4">
+        <div class="flex-1 pr-4">
+          <div class="flex justify-start mb-2">
+            <img [src]="item.icon" alt="{{ item.icon }}" class="w-6 h-6 border-2 border-red-500 flex items-center justify-center" />
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold">{{ item.name }}</h2>
+            <p class="text-xl font-bold text-gray-800 mb-2">₹{{ item.price.toFixed(2) }}</p>
+            <p class="text-gray-600 text-md">Restaurant: {{ item.restaurantName }}</p>
+            
+            <div class="flex items-center">
+              <button (click)="decreaseQuantity(item)" class="bg-white text-green-500 border border-gray-300 rounded-lg px-2">-</button>
+              <span class="px-2">{{ item.quantity }}</span>
+              <button (click)="increaseQuantity(item)" class="bg-white text-green-500 border border-gray-300 rounded-lg px-2">+</button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="relative w-40 h-40">
+          <img [src]="item.imageUrl" alt="{{ item.name }}" class="w-full h-full rounded-xl object-cover">
+          
+          <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+            <button (click)="removeFromCart(item)" class="px-6 py-2 bg-red-500 text-white border border-gray-300 rounded-lg font-semibold text-md w-32 h-10 flex items-center justify-center">
+              Remove
+            </button>
+          </div>
+  
+          <span class="text-xs text-gray-500 mt-4 block text-center">Customisable</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  

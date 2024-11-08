@@ -1,0 +1,32 @@
+<div class="restaurant-detail mt-[200px] max-w-4xl mx-auto px-1 relative">
+    
+    <h1 class="text-2xl font-extrabold my-4 text-black">{{ restaurant?.name }}</h1>
+
+    <div class="relative p-4 rounded-3xl  mb-4 bg-gradient-to-t from-gray-200 to-transparent">
+        <div class="restaurant-info border-1 border-gray-200 bg-white rounded-3xl p-4 shadow-md">
+            <div class="flex items-center mb-2">
+                <img src="star.png" alt="Rating Icon" class="w-6 h-6 mr-2" />
+                <span class="text-lg font-semibold">{{ restaurant?.rating }}</span>
+            </div>
+            <p class="text-red-600 text-sm mb-2">
+                
+                <span *ngFor="let category of restaurant?.categories; let last = last">
+                    {{ category }}<span *ngIf="!last">, </span>
+                </span>
+            </p>
+
+            <div class="flex items-center mb-2">
+                <strong class="mr-1">OUTLET:</strong>
+                <span>{{ restaurant?.location }}</span>
+            </div>
+
+            <div class="flex items-center">
+                <strong class="mr-1">TIMING:</strong>
+                <span>{{ restaurant?.timing }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="menu-items">
+        <app-menu-item *ngFor="let item of menuItems" [menuItem]="item"></app-menu-item>
+    </div>
+</div>
