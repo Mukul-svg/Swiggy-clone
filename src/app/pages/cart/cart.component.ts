@@ -23,12 +23,14 @@ export class CartComponent implements OnInit {
       this.loadCartItems();
     }
   }
+  
   fetchUserData() {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
     }
   }
+  
   loadCartItems() {
     this.cartItems = this.cartService.getCartItems(); 
   }
@@ -56,8 +58,23 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart(); 
     this.loadCartItems(); 
   }
-  // Redirects the user to the sign-in page if they are not logged in
+
   redirectToSignIn() {
     this.router.navigate(['/signin']);
   }
+
+  // Method to calculate the total amount
+  getTotalAmount(): number {
+    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+
+  // Add item to favourites
+  addToFavourites(item: any) {
+    let favourites = JSON.parse(localStorage.getItem('favourites') || '[]');
+    if (!favourites.some((favItem: any) => favItem.id === item.id)) {
+      favourites.push(item);
+      localStorage.setItem('favourites', JSON.stringify(favourites));
+      alert('Item added to favourites');
+    }
+  }  
 }

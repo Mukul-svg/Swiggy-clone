@@ -6,7 +6,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { ExploreComponent } from './pages/explore/explore.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { AccountComponent } from './pages/account/account.component';
-
+import { FavouritesComponent } from './pages/favorites/favorites.component';
 
 export const routes: Routes = [
   {
@@ -35,5 +35,9 @@ export const routes: Routes = [
     path:'account',
     component:AccountComponent,
 
-  }
+  },
+  {
+    path: 'favorites',
+    component: FavouritesComponent,
+  },
 ];

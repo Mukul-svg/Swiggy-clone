@@ -1,0 +1,20 @@
+.heart-icon {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .heart-icon:before {
+    content: "♥";
+    font-size: 24px;
+    color: #f45a52; /* Red color */
+    transition: color 0.3s ease;
+  }
+  
+  .heart-icon:hover:before {
+    color: #d30000; /* Darker red when hovered */
+  }
+  
